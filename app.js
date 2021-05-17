@@ -2,19 +2,21 @@ const express = require("express")
 const app = express()
 const port = process.env.PROT || 8080
 const morgan = require("morgan")
-const mongoclient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
 const usuarioRoutes = require("./routes/usuario")
 const dotenv = require("dotenv")
+const bodyParser = require('body-parser');
 dotenv.config();
 
 //conectarse a Mongo
-mongoclient.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true,useUnifiedTopology: true })
 .then(() => console.log("SUCESS: conectado a la database de Mongo"))
 .catch((err) => console.log(`ERROR: al conectarse a la database de Mongo: \n  ====> ${err.message}`))
 
 //middleware
-app.use(morgan("dev"))
-app.use("/", usuarioRoutes)
+app.use(morgan("dev"));
+app.use(bodyParser.json());
+app.use("/", usuarioRoutes);
 
 app.listen(port,() => {console.log(`server prendido en el puerto ${port}`)})
 
