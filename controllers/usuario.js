@@ -1,17 +1,11 @@
 const Usuario = require("../models/usuario");
 
 exports.getUsuarios = (req,res) => {
-  res.json({
-    usuario: [{
-                nombre:"Silvestre",
-                apellido:"casagrande"
-              },
-              {
-                nombre: "Toca",
-                apellido: "Anos"
-              }
-            ]
-  });
+  const usuarios = Usuario.find()
+    .then(usuarios => {
+      res.status(200).json({ usuarios });
+    })
+    .catch(err => console.log(err));
 };
 
 exports.createUsuario = (req,res) => {
