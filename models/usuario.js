@@ -8,7 +8,7 @@ const usuarioSchema = new mongoose.Schema({
   password: String,
   legajo: Number,
   mail: String,
-  foto: {data: Buffer, contentType: String},
+  foto: String,
   estado: String,
   telefono: {fijo: Number,celular: Number},
   domicilio: {

@@ -8,14 +8,14 @@ const vuelosYguardiasSchema = new mongoose.Schema({
     pais: String,
     ciudad: String,
     aeropuerto: String,
-    foto: {data: Buffer, contentType: String}
+    foto: String
   },
   destino: {
     fecha: Date,
     pais: String,
     ciudad: String,
     aeropuerto: String,
-    foto: {data: Buffer, contentType: String}
+    foto: String
   },
   escala: [{
       pais: String,
