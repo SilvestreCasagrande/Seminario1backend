@@ -46,7 +46,7 @@ exports.tryLogin = (req,res) => {
           });
         }
         res.status(200).json({
-          usuario: result
+          sucess: "Credenciales correctas"
         })
       })
 };
